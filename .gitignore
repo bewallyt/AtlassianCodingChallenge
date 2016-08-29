@@ -1,0 +1,12 @@
+node_modules
+**/*.log
+**/*.zip
+.idea
+TODO.markdown
+**/*.bak
+._.DS_Store
+.DS_Store
+coverage
+dist
+*.iml
+logs/
