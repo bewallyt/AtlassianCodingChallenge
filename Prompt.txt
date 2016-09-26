@@ -1,0 +1,66 @@
+
+We'd like you to complete a take-home coding exercise.  This exercise is not meant to be tricky or complex; however, it does represent a typical problem faced by the HipChat Engineering team.  Here are a few things to keep in mind as you work through it:
+* The position is for a Platform Developer, so writing this in Golang is preferable, but not required.  
+• There's no time limit; take your time and write quality, production-ready code.  Treat this as if you're a member of the HipChat Engineering team and are solving it as part of your responsibilities there.
+• Be thorough and take the opportunity to show the HipChat Engineering team that you've got technical chops.
+• Using frameworks and libraries is acceptable, just remember that the idea is to show off your coding abilities.
+  
+When you think it's ready for prime time, push your work to a public repo on Bitbucket or Github and send us a link.
+  
+Now, for the coding exercise...
+Please write a RESTful API that takes a chat message string as input and returns a JSON object containing information about its contents as described below.
+  
+Your service should parse the following data from the input:
+1. mentions - A way to mention a user. Always starts with an '@' and ends when hitting a non-word character. (https://confluence.atlassian.com/hipchat/fun-with-emoticons-744525805.html)
+2. Emoticons - For this exercise, you only need to consider 'custom' emoticons which are alphanumeric strings, no longer than 15 characters, contained in parenthesis. You can assume that anything matching this format is an emoticon. (https://www.hipchat.com/emoticons)
+3. Links - Any URLs contained in the message, along with the page's title.
+  
+The response should be a JSON object containing arrays of all matches parsed from the input string.
+For example, calling your function with the following inputs should result in the corresponding return values.
+Input: "@chris you around?"
+Return:
+{
+  "mentions": [
+    "chris"
+  ]
+}
+ 
+Input: "Good morning! (megusta) (coffee)"
+Return:
+{
+  "emoticons": [
+    "megusta",
+    "coffee"
+  ]
+}
+ 
+Input: "Olympics are starting soon; http://www.nbcolympics.com"
+Return:
+{
+  "links": [
+    {
+      "url": "http://www.nbcolympics.com",
+      "title": "2016 Rio Olympic Games | NBC Olympics"
+    }
+  ]
+}
+ 
+Input: "@bob @john (success) such a cool feature; https://twitter.com/jdorfman/status/430511497475670016"
+Return:
+{
+  "mentions": [
+    "bob",
+    "john"
+  ],
+  "emoticons": [
+    "success"
+  ],
+  "links": [
+    {
+      "url": "https://twitter.com/jdorfman/status/430511497475670016",
+      "title": "Justin Dorfman on Twitter: &quot;nice @littlebigdetail from @HipChat (shows hex colors when pasted in chat). http://t.co/7cI6Gjy5pq&quot;"
+    }
+  ]
+}
+ 
+Good luck!
